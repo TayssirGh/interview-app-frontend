@@ -4,9 +4,9 @@ import {ParserService} from "../service/parser.service";
 import {ParserInput} from "../model/ParserInput";
 
 @Component({
-    templateUrl: './inputdemo.component.html'
+    templateUrl: './parser.component.html'
 })
-export class InputDemoComponent implements OnInit {
+export class ParserComponent implements OnInit {
 
     value!: string;
     candidates: Candidate[] = [];

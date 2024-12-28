@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { InputDemoComponent } from './inputdemo.component';
-import { InputDemoRoutingModule } from './inputdemo-routing.module';
+import { ParserComponent } from './parser.component';
+import { ParserRoutingModule } from './parser-routing.module';
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CalendarModule } from "primeng/calendar";
 import { ChipsModule } from "primeng/chips";
@@ -32,7 +32,7 @@ import {RippleModule} from "primeng/ripple";
     imports: [
         CommonModule,
         FormsModule,
-        InputDemoRoutingModule,
+        ParserRoutingModule,
         AutoCompleteModule,
         CalendarModule,
         ChipsModule,
@@ -59,6 +59,6 @@ import {RippleModule} from "primeng/ripple";
         InputGroupAddonModule,
         RippleModule
     ],
-	declarations: [InputDemoComponent]
+	declarations: [ParserComponent]
 })
-export class InputDemoModule { }
+export class ParserModule { }
