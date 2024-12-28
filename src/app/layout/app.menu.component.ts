@@ -21,6 +21,13 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Admin',
+                items: [
+                    { label: 'Candidates', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/candidates'] },
+                ]
+            },
+            
+            {
                 label: 'UI Components',
                 items: [
                     { label: 'Testes', icon: 'pi pi-fw pi-check-square', routerLink: ['/parser'] },
