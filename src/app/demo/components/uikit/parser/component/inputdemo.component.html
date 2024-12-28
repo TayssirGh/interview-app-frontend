@@ -1,0 +1,30 @@
+<div class="grid p-fluid">
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <h5>Enter your syntax here :</h5>
+            <textarea
+                rows="5"
+                cols="30"
+                placeholder="Your Message"
+                pInputTextarea
+                [(ngModel)]="value"
+            ></textarea>
+            <div class="col-1 col-offset-11">
+                <button pButton type="button" label="Submit" (click)="submit()"></button>
+            </div>
+        </div>
+
+        <div *ngIf="candidates.length > 0" class="card">
+            <h5>Answered Candidates:</h5>
+            <ul>
+                <li *ngFor="let candidate of candidates">
+                    {{ candidate.name }} (ID: {{ candidate.id }})
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="errorMessage" class="error">
+            {{ errorMessage }}
+        </div>
+    </div>
+</div>
