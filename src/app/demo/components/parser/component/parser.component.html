@@ -2,19 +2,11 @@
     <div class="col-12 md:col-12">
         <div class="card">
             <h5>Enter your syntax here :</h5>
-            <textarea
-                rows="5"
-                cols="30"
-                placeholder="Your Message"
-                pInputTextarea
-            ></textarea>
-<!--            <textarea-->
-<!--                rows="5"-->
-<!--                cols="30"-->
-<!--                placeholder="Your Message"-->
-<!--                pInputTextarea-->
-<!--                [(ngModel)]="value"-->
-<!--            ></textarea>-->
+            <ngx-codemirror
+                [options]="codeMirrorOptions"
+                            [(ngModel)]="query"
+                            (ngModelChange)="setEditorContent($event)">
+            </ngx-codemirror>
             <div class="col-1 col-offset-11">
                 <button pButton type="button" label="Submit" (click)="submit()"></button>
             </div>
