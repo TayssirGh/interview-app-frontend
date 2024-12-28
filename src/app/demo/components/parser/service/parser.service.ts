@@ -1,8 +1,8 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {ParserInput} from "../model/ParserInput";
+import {ParserInput} from "../../../model/ParserInput";
 import {Observable} from "rxjs";
-import {Candidate} from "../model/Candidate";
+import {Candidate} from "../../../model/Candidate";
 
 @Injectable({
     providedIn: 'root'
