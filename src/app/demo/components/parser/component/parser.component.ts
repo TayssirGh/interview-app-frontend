@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Candidate} from "../model/Candidate";
+import {Candidate} from "../../../model/Candidate";
 import {ParserService} from "../service/parser.service";
-import {ParserInput} from "../model/ParserInput";
+import {ParserInput} from "../../../model/ParserInput";
 import 'src/assets/demo/scripts/custom-syntax-mode.js'
 @Component({
     templateUrl: './parser.component.html',

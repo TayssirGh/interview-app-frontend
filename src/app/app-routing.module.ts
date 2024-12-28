@@ -11,6 +11,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                 children: [
                     { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'parser', loadChildren: () => import('./demo/components/parser/component/parser.module').then(m => m.ParserModule) },
+                    { path: 'candidate', loadChildren: () => import('./demo/components/candidate/component/candidate.module').then(m => m.CandidateModule) },
                     { path: 'admin/candidates', loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule) },
                     { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
