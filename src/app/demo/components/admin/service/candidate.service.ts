@@ -15,8 +15,11 @@ export class CandidateService {
     findCandidates(): Observable<Candidate[]> {
         return this.http.get<Candidate[]>(`${this.baseUrl}/find-candidates`);
     }
-    removeCandidate(id: number): Observable<string> {
-        return this.http.delete<string>(`${this.baseUrl}/delete/${id}`);
+    updateCandidate(candidate: Candidate): Observable<Candidate> {
+        return this.http.put<Candidate>(`${this.baseUrl}/update-candidate`, candidate);
+    }
+    removeCandidate(id: string): Observable<string> {
+        return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
     }
 
 }

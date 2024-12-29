@@ -1,0 +1,179 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                    <div class="my-2">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+                        <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedCandidates || !selectedCandidates.length"></button>
+
+                    </div>
+                </ng-template>
+
+                <!-- <ng-template pTemplate="right">
+                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help" (click)="dt.exportCSV()"></button>
+                </ng-template> -->
+            </p-toolbar>
+
+            <p-table #dt [value]="candidates" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedCandidates" selectionMode="multiple" [rowHover]="true" dataKey="id">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">Manage Candidates</h5>
+                        <span class="block mt-2 md:mt-0 p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..."  class="w-full sm:w-auto"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="name">Full Name <p-sortIcon field="name"></p-sortIcon></th>
+                        <th>Email</th>
+                        <th>Position</th>
+                        <th pSortableColumn="interviewStatus">Interview score <p-sortIcon field="interviewScore"></p-sortIcon></th>
+                        <th pSortableColumn="interviewStatus">Interview Status <p-sortIcon field="interviewStatus"></p-sortIcon></th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-candidate>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="candidate"></p-tableCheckbox>
+                        </td>
+                        <td style="width:14%; min-width:10rem;">
+                            <span class="p-column-title">Full Name</span>
+                            {{candidate.name}}
+                        </td>
+                        <td style="width:14%; min-width:10rem;">
+                            <span class="p-column-title">Email</span>
+                            {{candidate.email}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            <span class="p-column-title">Position</span>
+                            {{candidate.appliedPosition}}
+                        </td>
+                        <td style="width:10%; min-width: 10rem; text-align: right;">
+                            <span class="p-column-title">Score</span>
+                            {{candidate.interviewScore}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            <span class="p-column-title">Interview Status</span>
+<!--                            <p-tag [value]="candidate.status" [severity]="getSeverity(candidate.status)" />-->
+
+                            <span [class]="'product-badge status-' + (candidate.status ? candidate.status.toLowerCase() : '')">{{candidate.status}}</span>
+                        </td>
+                        <td>
+                            <div class="flex" style="gap: 0.5rem;">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success" (click)="editCandidate(candidate)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteCandidate(candidate)"></button>
+                            </div>
+
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <!-- Candidate Details Dialog -->
+        <p-dialog [(visible)]="candidateDialog" [style]="{width: '500px',height:'750px','overflow-y': 'auto'}" header="Candidate Details" [modal]="true" class="p-fluid">
+            <ng-template pTemplate="content">
+                <!-- <img [src]="'assets/demo/images/product/' + product.image" [alt]="product.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.image"> -->
+                <div class="field">
+                    <label for="name">Full Name</label>
+                    <input type="text" pInputText id="name" [(ngModel)]="candidate.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !candidate.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !candidate.name">Name is required.</small>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" pInputText id="email" [(ngModel)]="candidate.email" required/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !candidate.email">Email is required.</small>
+                </div>
+                <div class="field">
+                    <label >Position</label>
+                    <p-dropdown
+                        [(ngModel)]="candidate.appliedPosition"
+                        inputId="position"
+                        [options]="positions"
+                        placeholder="Select Position"
+                        appendTo="body"
+                        [style]="{'max-height': '200px', 'overflow-y': 'auto'}">
+                        <ng-template pTemplate="selectedItem">
+                            <span *ngIf="candidate && candidate.appliedPosition">{{candidate.appliedPosition}}</span>
+                        </ng-template>
+                        <ng-template let-option pTemplate="item">
+                            <span>{{option}}</span>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+                <div class="field">
+                    <label>Skills</label>
+                    <p-chips [(ngModel)]="candidate.skills">
+                        <ng-template let-item pTemplate="item">
+                            {{item}} <i class="pi pi-code ml-2"></i>
+                        </ng-template>
+                    </p-chips>
+                </div>
+                <div class="field">
+                    <label>Interview Status</label>
+                    <p-dropdown [(ngModel)]="candidate.status" inputId="interviewStatus"  [options]="statuses" placeholder="Select">
+                        <ng-template pTemplate="selectedItem">
+                            <span *ngIf="candidate && candidate.status" [class]="'product-badge status-' + candidate.status.toString().toLowerCase()">{{candidate.status}}</span>
+                        </ng-template>
+                        <ng-template let-option pTemplate="item">
+                            <span [class]="'product-badge status-' + option.value">{{option}}</span>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+                <div *ngIf="editMode" class="field">
+                    <label for="feedback">feedback</label>
+                    <input type="text" pInputText id="feedback" [(ngModel)]="candidate.feedback" required/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !candidate.feedback">Feedback is empty.</small>
+                </div>
+                <div class="field grid" *ngIf="editMode">
+                    <div class="col-6">
+                        <label for="score">Score</label>
+                        <input type="text" pInputText id="score" [(ngModel)]="candidate.interviewScore" required/>
+                    </div>
+                    <div class="col-6 ">
+                        <label for="rating">Rating</label>
+                        <input type="text" pInputText id="rating" [(ngModel)]="candidate.rating" required/>
+                    </div>
+                </div>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="submitCandidate(candidate)"></button>
+            </ng-template>
+        </p-dialog>
+
+        <!-- Delete Confirmation Dialogs -->
+        <p-dialog [(visible)]="deleteCandidateDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+            <div class="flex align-items-center justify-content-center">
+                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                <span *ngIf="candidate">Are you sure you want to delete <b>{{candidate.name}}</b>?</span>
+            </div>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteCandidateDialog = false"></button>
+                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDelete()"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-dialog [(visible)]="deleteCandidatesDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+            <div class="flex align-items-center justify-content-center">
+                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                <span>Are you sure you want to delete selected candidates?</span>
+            </div>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteCandidatesDialog = false"></button>
+                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDeleteSelected()"></button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>
