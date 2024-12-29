@@ -24,6 +24,14 @@ export class AppMenuComponent implements OnInit {
                 label: 'Admin',
                 items: [
                     { label: 'Candidates', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/candidates'] },
+                    { label: 'Evaluate', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/evaluate'] },
+                ]
+            },
+            {
+                label: 'Interviewee',
+                items: [
+                    { label: 'Request', icon: 'pi pi-fw pi-search', routerLink: ['/interviewee/request'] },
+                    { label: 'Pass', icon: 'pi pi-fw pi-check-square', routerLink: ['/interviewee/pass'] }
                 ]
             },
             

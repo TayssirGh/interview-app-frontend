@@ -32,7 +32,10 @@
                         "styles": [
                             "node_modules/codemirror/lib/codemirror.css",
                             "node_modules/codemirror/theme/material.css",
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "node_modules/primeng/resources/themes/lara-light-indigo/theme.css",
+              "node_modules/primeng/resources/primeng.min.css", 
+              "node_modules/font-awesome/css/font-awesome.min.css"
                         ],
                         "scripts": []
                     },
