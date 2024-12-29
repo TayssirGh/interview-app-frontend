@@ -1,0 +1,44 @@
+<div class="flex justify-content-center align-items-center min-h-screen min-w-screen bg-gradient-to-b from-indigo-500 via-blue-500 to-sky-500 pl-8 pr-8">
+    <div class="w-full max-w-screen-sm p-1 bg-white shadow-lg flex flex-column overflow-hidden pl-4 pr-4 pt-4 pb-5" style="border-radius: 20px;">
+        <div class="text-center pb-5">
+            <div class="text-900 text-lg font-medium mb-1">Interview Page</div>
+            <span class="text-600 font-medium text-xs">Interact with your interviewer in real-time</span>
+        </div>
+
+        <!-- Video Section -->
+        <div class="flex flex-column align-items-center w-full gap-1 pb-3">
+            <!-- Interviewer's Video -->
+            <div class="relative w-full flex justify-content-center overflow-hidden" style="border-radius: 20px;">
+                <video autoplay muted controls class="w-full" style="height: 50vh; object-fit: cover;"></video>
+
+                <!-- Your Camera (Positioned Bottom Right in a Circle) -->
+                <div class="absolute bottom-4 right-4 rounded-full overflow-hidden w-16 h-16 shadow-lg">
+                    <video autoplay muted controls class="w-full h-full object-cover"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Section -->
+        <div class="w-full text-center mt-1 pb-2">
+            <div class="text-900 text-sm font-medium mb-1">Question</div>
+            <div class="text-600 font-medium text-xs" style="max-width: 100%; white-space: normal; overflow-y: auto; max-height: 5rem; line-height: 1.5;">
+                Un palindrome est une chaîne qui se lit de la même manière de gauche à droite et de droite à gauche, en ignorant les espaces, la ponctuation et la casse.
+                Étant donné une chaîne de caractères s, renvoyez true si s est un palindrome, et false sinon.
+                Notez que vous devez ignorer les caractères non alphanumériques et traiter les lettres comme étant insensibles à la casse.
+                Exemple : Input: s = "A man, a plan, a canal: Panama"
+                Output: true
+                Explanation: La chaîne après suppression des caractères non alphanumériques et conversion en minuscules est "amanaplanacanalpanama", qui est un palindrome.
+            </div>
+        </div>
+
+        <!-- Answer Section -->
+        <div class="flex flex-column align-items-center justify-content-center w-full mt-1 mb-1">
+            <textarea id="answer" placeholder="Type your answer here..." class="w-full md:w-36rem mb-2 p-2 rounded-lg shadow-md" style="height: 80px;"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-content-center">
+            <button pButton pRipple label="Submit Answer" class="p-2 text-sm mt-2" style="max-width: 12rem;"></button>
+        </div>
+    </div>
+</div>

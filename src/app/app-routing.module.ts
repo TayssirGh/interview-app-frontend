@@ -14,6 +14,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: 'candidate', loadChildren: () => import('./demo/components/candidate/component/candidate.module').then(m => m.CandidateModule) },
                     { path: 'admin/candidates', loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule) },
                     { path: 'interviewee/request', loadChildren: () => import('./demo/components/interviewee/interviewee.module').then(m => m.IntervieweeModule) },
+                    { path: 'interview1', loadChildren: () => import('./demo/components/interview1/interview1.module').then(m => m.Interview1Module) },
+                    { path: 'interview2', loadChildren: () => import('./demo/components/interview2/interview2.module').then(m => m.Interview2Module) },
                     { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },

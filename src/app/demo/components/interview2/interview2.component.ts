@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  templateUrl: './interviewee.component.html',
+  templateUrl: './interview2.component.html',
   providers: [MessageService] // Include MessageService here
 })
-export class IntervieweeComponent implements OnInit {
+export class Interview2Component implements OnInit {
 
   // Modèle pour les informations du candidat
   candidate = {

@@ -31,7 +31,9 @@ export class AppMenuComponent implements OnInit {
                 label: 'Interviewee',
                 items: [
                     { label: 'Request', icon: 'pi pi-fw pi-search', routerLink: ['/interviewee/request'] },
-                    { label: 'Pass', icon: 'pi pi-fw pi-check-square', routerLink: ['/interviewee/pass'] }
+                    { label: 'Interview1', icon: 'pi pi-fw pi-check-square', routerLink: ['interview1'] },
+                    { label: 'Interview2', icon: 'pi pi-fw pi-check-square', routerLink: ['interview2'] }
+
                 ]
             },
             

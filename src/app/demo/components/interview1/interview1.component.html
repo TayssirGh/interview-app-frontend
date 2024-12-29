@@ -1,0 +1,30 @@
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+    <div class="flex flex-column align-items-center justify-content-center">
+      <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
+        <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
+          <div class="text-center mb-5">
+            <div class="text-900 text-3xl font-medium mb-3">Access Your Meeting</div>
+            <span class="text-600 font-medium">Enter your full name and meeting code to join</span>
+          </div>
+  
+          <div class="flex flex-column align-items-center justify-content-center">
+            <!-- Full Name -->
+            <div class="w-full md:w-30rem text-left mb-2">
+              <label for="fullName" class="text-900 text-xl font-medium">Full Name</label>
+            </div>
+            <input id="fullName" type="text" pInputText placeholder="Enter your full name" [(ngModel)]="user.fullName" class="w-full md:w-30rem mb-3" style="padding:1rem" required />
+  
+            <!-- Meeting Code -->
+            <div class="w-full md:w-30rem text-left mb-2">
+              <label for="meetingCode" class="text-900 text-xl font-medium">Meeting Code</label>
+            </div>
+            <input id="meetingCode" type="text" pInputText placeholder="Enter the meeting code" [(ngModel)]="user.meetingCode" class="w-full md:w-30rem mb-3" style="padding:1rem" required />
+  
+            <!-- Submit Button -->
+            <button pButton pRipple label="Join Meeting" class="w-full p-3 text-xl mt-3" (click)="joinMeeting()"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
