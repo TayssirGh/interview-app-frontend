@@ -1,3 +1,5 @@
+import {Status} from "./Status";
+
 export interface Candidate {
     id: string;
     interviewId: string;
@@ -9,6 +11,6 @@ export interface Candidate {
     responseTime: number;
     feedback: string;
     rating: number;
-    status: string;
+    status: Status;
     createdAt: Date;
 }

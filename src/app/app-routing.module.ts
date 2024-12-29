@@ -12,7 +12,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'parser', loadChildren: () => import('./demo/components/parser/component/parser.module').then(m => m.ParserModule) },
                     { path: 'candidate', loadChildren: () => import('./demo/components/candidate/component/candidate.module').then(m => m.CandidateModule) },
-                    { path: 'admin/candidates', loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule) },
+                    { path: 'admin/candidates', loadChildren: () => import('./demo/components/admin/component/admin.module').then(m => m.AdminModule) },
                     { path: 'interviewee/request', loadChildren: () => import('./demo/components/interviewee/interviewee.module').then(m => m.IntervieweeModule) },
                     { path: 'interview1', loadChildren: () => import('./demo/components/interview1/interview1.module').then(m => m.Interview1Module) },
                     { path: 'interview2', loadChildren: () => import('./demo/components/interview2/interview2.module').then(m => m.Interview2Module) },

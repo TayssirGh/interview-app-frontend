@@ -25,6 +25,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Candidates', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/candidates'] },
                     { label: 'Evaluate', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/evaluate'] },
+                    { label: 'Response', icon: 'pi pi-fw pi-code', routerLink: ['/parser'] },
                 ]
             },
             {
@@ -36,11 +37,10 @@ export class AppMenuComponent implements OnInit {
 
                 ]
             },
-            
+
             {
                 label: 'UI Components',
                 items: [
-                    { label: 'Testes', icon: 'pi pi-fw pi-code', routerLink: ['/parser'] },
                     { label: 'Candidate', icon: 'pi pi-fw pi-user', routerLink: ['/candidate'] },
                 ]
             },

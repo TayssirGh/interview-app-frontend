@@ -17,6 +17,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 import { AdminComponent } from './admin.component';
 import { MessageService } from 'primeng/api';
+import {ChipsModule} from "primeng/chips";
+import {TagModule} from "primeng/tag";
 
 @NgModule({
     imports: [
@@ -35,7 +37,9 @@ import { MessageService } from 'primeng/api';
         DropdownModule,
         RadioButtonModule,
         InputNumberModule,
-        DialogModule
+        DialogModule,
+        ChipsModule,
+        TagModule,
     ],
     declarations: [AdminComponent],
     providers: [MessageService]
