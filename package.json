@@ -27,6 +27,7 @@
         "@fullcalendar/daygrid": "^6.0.3",
         "@fullcalendar/interaction": "^6.0.3",
         "@fullcalendar/timegrid": "^6.0.3",
+        "ace-builds": "^1.37.1",
         "bcryptjs": "^2.4.3",
         "chart.js": "^3.3.2",
         "codemirror": "^5.65.18",
