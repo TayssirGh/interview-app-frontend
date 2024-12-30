@@ -3,6 +3,7 @@ import {Candidate} from "../../../model/Candidate";
 import {ParserService} from "../service/parser.service";
 import {ParserInput} from "../../../model/ParserInput";
 import 'src/assets/demo/scripts/custom-syntax-mode.js'
+import {MessageService} from "primeng/api";
 @Component({
     templateUrl: './parser.component.html',
 })
@@ -26,7 +27,7 @@ export class ParserComponent implements OnInit {
 
     query: string ;
 
-    constructor(private parserService: ParserService) { }
+    constructor(private parserService: ParserService, private messageService: MessageService) { }
 
     ngOnInit() {}
     submit() {
@@ -36,9 +37,22 @@ export class ParserComponent implements OnInit {
             next: (data) => {
                 this.candidates = data;
                 this.errorMessage = '';
+                const candidateNames = data.map(candidate => candidate.name.toUpperCase()).join(', ');
+
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'Message sent to ' + candidateNames,
+                });
                 console.log('Candidates:', data);
+
             },
             error: (err) => {
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Validation Error',
+                    detail: err.message,
+                });
                 this.errorMessage = `Failed to process the syntax: ${err.message}`;
                 console.error('Error:', err);
             },
