@@ -35,8 +35,8 @@
                         <th pSortableColumn="name">Full Name <p-sortIcon field="name"></p-sortIcon></th>
                         <th>Email</th>
                         <th>Position</th>
-                        <th pSortableColumn="interviewStatus">Interview score <p-sortIcon field="interviewScore"></p-sortIcon></th>
-                        <th pSortableColumn="interviewStatus">Interview Status <p-sortIcon field="interviewStatus"></p-sortIcon></th>
+                        <th pSortableColumn="interviewScore">Interview score <p-sortIcon field="interviewScore"></p-sortIcon></th>
+                        <th pSortableColumn="status">Interview Status <p-sortIcon field="status"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -71,6 +71,7 @@
                             <div class="flex" style="gap: 0.5rem;">
                                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success" (click)="editCandidate(candidate)"></button>
                                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteCandidate(candidate)"></button>
+                                <button pButton pRipple icon="pi pi-upload" class="p-button-rounded p-button-warning" (click)="deleteCandidate(candidate)"></button>
                             </div>
 
                         </td>

@@ -5,6 +5,8 @@ import {ParserComponent} from './parser.component';
 import {ParserRoutingModule} from './parser-routing.module';
 import {CodemirrorModule} from "@ctrl/ngx-codemirror";
 import {ButtonModule} from "primeng/button";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
 
 @NgModule({
     imports: [
@@ -13,7 +15,9 @@ import {ButtonModule} from "primeng/button";
         ParserRoutingModule,
         CodemirrorModule,
         ButtonModule,
+        ToastModule,
     ],
-	declarations: [ParserComponent]
+	declarations: [ParserComponent],
+    providers: [MessageService]
 })
 export class ParserModule { }
