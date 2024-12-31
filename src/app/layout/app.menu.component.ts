@@ -33,7 +33,8 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Request', icon: 'pi pi-fw pi-search', routerLink: ['/interviewee/request'] },
                     { label: 'Interview1', icon: 'pi pi-fw pi-check-square', routerLink: ['interview1'] },
-                    { label: 'Interview2', icon: 'pi pi-fw pi-check-square', routerLink: ['interview2'] }
+                    { label: 'Interview2', icon: 'pi pi-fw pi-check-square', routerLink: ['interview2'] },
+                    { label: 'Chat', icon: 'pi pi-fw pi-check-square', routerLink: ['chat'] }
 
                 ]
             },

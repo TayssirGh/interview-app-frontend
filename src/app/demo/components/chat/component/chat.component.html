@@ -1,0 +1,64 @@
+<div class="flex flex-column min-h-screen bg-gradient-to-b from-indigo-500 via-blue-500 to-sky-500 p-8">
+    <div class="custom-width-height bg-white shadow-lg p-5 flex flex-column overflow-hidden" style="border-radius: 10px; height: 70vh; width: 70vh;">
+      
+      <!-- Conteneur des messages avec scroll -->
+      <div #messagesContainer class="flex-1 overflow-y-auto pr-3 mb-3">
+        <div *ngFor="let message of messages" class="flex items-end mb-3" [style.justifyContent]="message.isSent ? 'flex-end' : 'flex-start'">
+          
+          <!-- Affichage de l'image seulement pour les messages reçus -->
+          <div *ngIf="!message.isSent" class="w-10 h-10 rounded-full overflow-hidden mr-3">
+            <img [src]="picc" alt="Profile Picture" class="object-cover rounded-full" style="width: 40px; height: 40px;">
+          </div>
+          
+          <!-- Message -->
+          <div [ngClass]="{ 'sent': message.isSent, 'received': !message.isSent }"
+               class="px-4 py-2 text-sm"
+               [style.backgroundColor]="message.isSent ? 'rgb(79, 70, 229)' : '#e0e0e0'"
+               [style.color]="message.isSent ? 'white' : 'black'"
+               [style.maxWidth]="'70%'">
+            {{ message.text }}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Champ de saisie et bouton d'envoi -->
+      <div class="flex items-center p-3 bg-gray-100 border-t border-gray-300 rounded-lg">
+        <input type="text" [(ngModel)]="newMessage" placeholder="Write your message..." 
+               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+               (keydown.enter)="sendMessage()" />
+        <button (click)="sendMessage()" 
+                class="ml-3 px-4 py-2 bg-indigo-500 text-white font-medium border border-indigo-500 hover:bg-indigo-600 transition rounded-full">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Style intégré dans le HTML -->
+  <style>
+    .custom-width-height {
+      width: 70vh; /* Définir la largeur en fonction de la hauteur du viewport */
+    }
+
+    /* Messages envoyés avec coins arrondis comme avant */
+    .sent {
+      border-radius: 20px 20px 0 20px; /* Coins arrondis uniquement en bas à gauche et droite */
+      text-align: right;
+    }
+  
+    /* Messages reçus avec coins arrondis comme avant */
+    .received {
+      border-radius: 20px 20px 20px 0; /* Coins arrondis uniquement en haut à gauche et en bas à droite */
+      text-align: left;
+    }
+  
+    /* S'assurer que l'arrondissement est appliqué à la div parent */
+    .rounded-lg {
+      border-radius: 10px; /* Arrondi général pour les éléments du bas */
+    }
+  
+    /* Ajouter des coins arrondis pour le bouton */
+    button {
+      border-radius: 25px !important; /* Arrondi plus marqué pour le bouton */
+    }
+  </style>
