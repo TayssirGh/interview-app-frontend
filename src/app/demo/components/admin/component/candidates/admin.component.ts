@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {Table} from 'primeng/table';
-import {Candidate} from "../../../model/Candidate";
-import {CandidateService} from "../service/candidate.service";
-import {Status} from "../../../model/Status";
+import {Candidate} from "../../../../model/Candidate";
+import {CandidateService} from "../../service/candidate.service";
+import {Status} from "../../../../model/Status";
 
 
 @Component({
@@ -53,7 +53,7 @@ export class AdminComponent implements OnInit {
   initializeCandidate() {
       this.candidate =  {
           id: null,
-          interviewId: null,
+          interviewId: "i1",
           name: "",
           email: "",
           appliedPosition: "",
