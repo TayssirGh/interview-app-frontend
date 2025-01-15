@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import 'src/assets/demo/scripts/custom-syntax-mode.js'
 import {Candidate} from "../../../model/Candidate";
-import {CandidateService} from "../../admin/service/candidate.service";
+import {CandidateService} from "../../admin/component/service/candidate.service";
 
 @Component({
     templateUrl: './candidate.component.html',

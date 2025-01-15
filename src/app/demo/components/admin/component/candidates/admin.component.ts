@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {Table} from 'primeng/table';
 import {Candidate} from "../../../../model/Candidate";
-import {CandidateService} from "../../service/candidate.service";
+import {CandidateService} from "../service/candidate.service";
 import {Status} from "../../../../model/Status";
 
 
