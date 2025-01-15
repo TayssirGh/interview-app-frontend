@@ -37,6 +37,8 @@
                         <th>Position</th>
                         <th pSortableColumn="interviewScore">Interview score <p-sortIcon field="interviewScore"></p-sortIcon></th>
                         <th pSortableColumn="status">Interview Status <p-sortIcon field="status"></p-sortIcon></th>
+                        <th pSortableColumn="status">Decision <p-sortIcon field="status"></p-sortIcon></th>
+
                         <th></th>
                     </tr>
                 </ng-template>
@@ -129,6 +131,11 @@
                             <span [class]="'product-badge status-' + option.value">{{option}}</span>
                         </ng-template>
                     </p-dropdown>
+                </div>
+                <div class="field">
+                    <label for="name">Location</label>
+                    <input type="text" pInputText id="name" [(ngModel)]="candidate.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !candidate.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !candidate.name">Name is required.</small>
                 </div>
                 <div *ngIf="editMode" class="field">
                     <label for="feedback">feedback</label>
