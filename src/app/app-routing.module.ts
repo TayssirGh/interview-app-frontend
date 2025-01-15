@@ -9,7 +9,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-                    { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
+                    // { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'parser', loadChildren: () => import('./demo/components/parser/component/parser.module').then(m => m.ParserModule) },
                     { path: 'admin/candidates', loadChildren: () => import('./demo/components/admin/component/candidates/admin.module').then(m => m.AdminModule) },
                     { path: 'interviewee/request', loadChildren: () => import('./demo/components/interviewee/interviewee.module').then(m => m.IntervieweeModule) },
@@ -19,7 +19,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: 'utilities', loadChildren: () => import('./demo/components/utilities/utilities.module').then(m => m.UtilitiesModule) },
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
-                    { path: 'register', loadChildren: () => import('./demo/components/auth/register/register.module').then(m => m.RegisterModule) },
+                    { path: '', loadChildren: () => import('./demo/components/auth/register/register.module').then(m => m.RegisterModule) },
                     { path: 'login', loadChildren: () => import('./demo/components/auth/login/login.module').then(m => m.LoginModule) }
 
                 ]

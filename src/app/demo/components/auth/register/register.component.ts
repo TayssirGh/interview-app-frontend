@@ -30,13 +30,12 @@ export class RegisterComponent {
           alert('Account successfully registered!');
         },
         error: (error) => {
-          // Vérifiez ici si l'erreur est un HttpErrorResponse
           if (error instanceof Error) {
             alert('Client-side error: ' + error.message);
-          } else {
-            // Si c'est une erreur HTTP, vous pouvez extraire plus d'informations
-            alert('Error registering user: ' + (error.error ? error.error : error.message));
-          }
+          } 
+        //   else {
+        //     alert('Error registering user: ' + (error.error ? error.error : error.message));
+        //   }
         }
       });
     }
